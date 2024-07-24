@@ -1,5 +1,6 @@
 import os
 from quixstreams import Application
+from datetime import timedelta
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -15,6 +16,12 @@ sdf = app.dataframe(input_topic)
 # put transformation logic here
 # see docs for what you can do
 # https://quix.io/docs/get-started/quixtour/process-threshold.html
+
+sdf = (
+    sdf.tumbling_window(duration_ms=timedelta(hours=1))
+    .count()
+    .final()
+)
 
 sdf = sdf.update(lambda row: print(row))
 
