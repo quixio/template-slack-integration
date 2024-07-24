@@ -43,14 +43,34 @@ def main():
     Read data from the hardcoded dataset and publish it to Kafka
     """
 
+    slack_members = []
+    # Call the users.list method using the WebClient
+    try:
+        result = slack_client.users_list()
+        
+        # Check if the response is ok
+        if result["ok"]:
+            # Loop through members and print their names
+            slack_members = result["members"]
+        else:
+            print("Error: {}".format(result.get("error", "Unknown error")))
+
+    except SlackApiError as e:
+        logger.error("Error creating conversation: {}".format(e))
+
+
     # create a pre-configured Producer object.
     with app.get_producer() as producer:
         # iterate over the data from the hardcoded dataset
         data = get_data()
+
+        for member in result["members"]:
+            print(member["real_name"])  # or use member["name"] if you prefer
+            
         # print(data)
-        for row_data in data:
-            print("------------------")
-            print(row_data)
+        # for row_data in data:
+        #     print("------------------")
+        #     print(row_data)
 
             # json_data = json.dumps(row_data)  # convert the row to JSON
 
