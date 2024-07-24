@@ -6,7 +6,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v1", auto_offset_reset="earliest")
+app = Application(consumer_group="transformation-v2", auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
@@ -18,7 +18,7 @@ sdf = app.dataframe(input_topic)
 # https://quix.io/docs/get-started/quixtour/process-threshold.html
 
 sdf = (
-    sdf.tumbling_window(duration_ms=timedelta(hours=1))
+    sdf.tumbling_window(duration_ms=timedelta(minutes=1))
     .count()
     .final()
 )
