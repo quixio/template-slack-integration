@@ -57,21 +57,17 @@ def main():
 
         for member in result["members"]:
             print_properties(member)
-            
-        # print(data)
-        # for row_data in data:
-        #     print("------------------")
-        #     print(row_data)
 
-            # json_data = json.dumps(row_data)  # convert the row to JSON
+            json_data = json.dumps(member)  # convert the row to JSON
 
             # publish the data to the topic
-            # producer.produce(
-            #     topic=topic.name,
-            #     key=row_data['host'],
-            #     value=json_data,
-            # )
+            producer.produce(
+                topic=topic.name,
+                key='slack_members',
+                value=json_data,
+            )
 
+            
         print("All rows published")
 
 
