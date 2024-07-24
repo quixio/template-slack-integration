@@ -5,6 +5,7 @@ from quixstreams import Application  # import the Quix Streams modules for inter
 import os
 import json
 import logging
+import time
 
 # Import WebClient from Python SDK (github.com/slackapi/python-slack-sdk)
 from slack_sdk import WebClient
@@ -30,47 +31,49 @@ def main():
     """
     Read data from the hardcoded dataset and publish it to Kafka
     """
-
-    slack_members = []
-    # Call the users.list method using the WebClient
-    try:
-        result = slack_client.users_list()
-        
-        # Check if the response is ok
-        if result["ok"]:
-            # Loop through members and print their names
-            slack_members = result["members"]
-        else:
-            print("Error: {}".format(result.get("error", "Unknown error")))
-
-    except SlackApiError as e:
-        logger.error("Error creating conversation: {}".format(e))
-    
-    if slack_members == []:
-        print("No slack members")
-    else:
-        # create a pre-configured Producer object.
-        with app.get_producer() as producer:
+    while True:
+        slack_members = []
+        # Call the users.list method using the WebClient
+        try:
+            result = slack_client.users_list()
             
-            def print_properties(obj, indent=0):
-                for key, value in obj.items():
-                    print("  " * indent + f"{key}: {value}")
-                    if isinstance(value, dict):
-                        print_properties(value, indent + 1)
+            # Check if the response is ok
+            if result["ok"]:
+                # Loop through members and print their names
+                slack_members = result["members"]
+            else:
+                print("Error: {}".format(result.get("error", "Unknown error")))
 
-            for member in slack_members:
-                print_properties(member)
-
-                json_data = json.dumps(member)  # convert the row to JSON
-
-                # publish the data to the topic
-                producer.produce(
-                    topic=topic.name,
-                    key='slack_members',
-                    value=json_data,
-                )
+        except SlackApiError as e:
+            logger.error("Error creating conversation: {}".format(e))
+        
+        if slack_members == []:
+            print("No slack members")
+        else:
+            # create a pre-configured Producer object.
+            with app.get_producer() as producer:
                 
-            print("All rows published")
+                def print_properties(obj, indent=0):
+                    for key, value in obj.items():
+                        print("  " * indent + f"{key}: {value}")
+                        if isinstance(value, dict):
+                            print_properties(value, indent + 1)
+
+                for member in slack_members:
+                    print_properties(member)
+
+                    json_data = json.dumps(member)  # convert the row to JSON
+
+                    # publish the data to the topic
+                    producer.produce(
+                        topic=topic.name,
+                        key='slack_members',
+                        value=json_data,
+                    )
+                    
+                print("All rows published")
+        
+        time.sleep(3600) # sleep 1 hour
 
 
 if __name__ == "__main__":
