@@ -45,13 +45,18 @@ def main():
 
     except SlackApiError as e:
         logger.error("Error creating conversation: {}".format(e))
-
-
+                
     # create a pre-configured Producer object.
     with app.get_producer() as producer:
         
+        def print_properties(obj, indent=0):
+            for key, value in obj.items():
+                print("  " * indent + f"{key}: {value}")
+                if isinstance(value, dict):
+                    print_properties(value, indent + 1)
+
         for member in result["members"]:
-            print(member["name"])  # or use member["name"] if you prefer
+            print_properties(member)
             
         # print(data)
         # for row_data in data:
