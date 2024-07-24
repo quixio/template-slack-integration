@@ -51,7 +51,7 @@ def main():
     with app.get_producer() as producer:
         
         for member in result["members"]:
-            print(member["real_name"])  # or use member["name"] if you prefer
+            print(member["name"])  # or use member["name"] if you prefer
             
         # print(data)
         # for row_data in data:
