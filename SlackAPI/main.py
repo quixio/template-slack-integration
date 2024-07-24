@@ -55,7 +55,7 @@ def main():
                 if isinstance(value, dict):
                     print_properties(value, indent + 1)
 
-        for member in result["members"]:
+        for member in slack_members:
             print_properties(member)
 
             json_data = json.dumps(member)  # convert the row to JSON
