@@ -47,8 +47,10 @@ def main():
     with app.get_producer() as producer:
         # iterate over the data from the hardcoded dataset
         data = get_data()
-        print(data)
-        # for row_data in data_with_id:
+        # print(data)
+        for row_data in data:
+            print("------------------")
+            print(row_data)
 
             # json_data = json.dumps(row_data)  # convert the row to JSON
 
