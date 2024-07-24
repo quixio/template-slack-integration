@@ -66,7 +66,6 @@ def main():
                 key='slack_members',
                 value=json_data,
             )
-
             
         print("All rows published")
 
