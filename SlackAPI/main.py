@@ -45,29 +45,32 @@ def main():
 
     except SlackApiError as e:
         logger.error("Error creating conversation: {}".format(e))
-                
-    # create a pre-configured Producer object.
-    with app.get_producer() as producer:
-        
-        def print_properties(obj, indent=0):
-            for key, value in obj.items():
-                print("  " * indent + f"{key}: {value}")
-                if isinstance(value, dict):
-                    print_properties(value, indent + 1)
-
-        for member in slack_members:
-            print_properties(member)
-
-            json_data = json.dumps(member)  # convert the row to JSON
-
-            # publish the data to the topic
-            producer.produce(
-                topic=topic.name,
-                key='slack_members',
-                value=json_data,
-            )
+    
+    if slack_members == []:
+        print("No slack members")
+    else:
+        # create a pre-configured Producer object.
+        with app.get_producer() as producer:
             
-        print("All rows published")
+            def print_properties(obj, indent=0):
+                for key, value in obj.items():
+                    print("  " * indent + f"{key}: {value}")
+                    if isinstance(value, dict):
+                        print_properties(value, indent + 1)
+
+            for member in slack_members:
+                print_properties(member)
+
+                json_data = json.dumps(member)  # convert the row to JSON
+
+                # publish the data to the topic
+                producer.produce(
+                    topic=topic.name,
+                    key='slack_members',
+                    value=json_data,
+                )
+                
+            print("All rows published")
 
 
 if __name__ == "__main__":
