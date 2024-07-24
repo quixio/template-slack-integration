@@ -26,18 +26,6 @@ app = Application(consumer_group="data_source", auto_create_topics=True)  # crea
 topic_name = os.environ["output"]
 topic = app.topic(topic_name)
 
-# this function loads the file and sends each row to the publisher
-def get_data():
-
-    try:
-        # Call the users.list method using the WebClient
-        # users.list requires the users:read scope
-        return slack_client.users_list()
-
-    except SlackApiError as e:
-        logger.error("Error creating conversation: {}".format(e))
-
-
 def main():
     """
     Read data from the hardcoded dataset and publish it to Kafka
@@ -61,9 +49,7 @@ def main():
 
     # create a pre-configured Producer object.
     with app.get_producer() as producer:
-        # iterate over the data from the hardcoded dataset
-        data = get_data()
-
+        
         for member in result["members"]:
             print(member["real_name"])  # or use member["name"] if you prefer
             
