@@ -20,6 +20,10 @@ def message_hello(message, say):
     print(message)
     producer.produce(topic.name, json.dumps(message), "messages")
 
+@app.event("message")
+def handle_message_events(body, logger):
+    print(body)
+
 # Start your app
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
