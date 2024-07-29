@@ -10,11 +10,18 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 # visit https://slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
 @app.message("#sarcasm")
 def message_hello(message, say):
+    msg = str(message["text"][8:])
 
-    # say() sends a message to the channel where the event was triggered
-    say(f"Hey there <@{message['user']}>!")
+    res = ""
+    for idx in range(len(msg)):
+        if not idx % 2:
+            res = res + msg[idx].upper()
+        else:
+            res = res + msg[idx].lower()
+            
     # say(f"{message['text']}")
-    print("rx message" + message["text"])
+    # print("rx message" + message["text"])
+    print(msg)
 
 # Start your app
 if __name__ == "__main__":
