@@ -1,5 +1,6 @@
 import os
 from quixstreams import Application
+from datetime import datetime
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -16,7 +17,13 @@ sdf = app.dataframe(input_topic)
 def tx_message(data):
     user = data['user']
     text = data['text']
+    event_ts = float(data['event_ts'])  # Convert to float for datetime
+
+    # Convert timestamp to human-readable format
+    human_readable_time = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
+
     return {
+        "timestamp": human_readable_time,
         "user": user,
         "message": text
     }
