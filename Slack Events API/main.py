@@ -12,14 +12,13 @@ producer = quix_app.get_producer()
 # Initializes your app with your bot token and socket mode handler
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
-# Listens to incoming messages that contain "hello"
-# To learn available listener arguments,
-# visit https://slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
+# Listens to incoming messages
 @app.message("")
 def message_hello(message, say):
     print(message)
     producer.produce(topic.name, json.dumps(message), "messages")
 
+# handle message changed (someone edited their original message)
 @app.event("message")
 def handle_message_events(body, logger):
     producer.produce(topic.name, json.dumps(body), "messages")
