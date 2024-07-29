@@ -35,7 +35,8 @@ def tx_message(data):
         rtn['text'] = data['text']
         rtn['msg_id'] = data['client_msg_id']
         rtn['ts'] = float(data['ts'])
-
+        rtn['is_update'] = False
+        
     # Convert timestamp to human-readable format
     rtn['human_readable_time'] = datetime.fromtimestamp(int(rtn['ts'])).strftime('%Y-%m-%d %H:%M:%S')
 
