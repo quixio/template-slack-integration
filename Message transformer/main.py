@@ -33,7 +33,7 @@ def tx_message(data):
 # see docs for what you can do
 # https://quix.io/docs/get-started/quixtour/process-threshold.html
 
-sdf = sdf.update(lambda row: print(row))
+sdf = sdf.apply(lambda row: print(row))
 
 # sdf = sdf.to_topic(output_topic)
 
