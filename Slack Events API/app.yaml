@@ -9,7 +9,7 @@ variables:
   - name: SLACK_BOT_TOKEN
     inputType: Secret
     description: ''
-    defaultValue: slack_bot_token
+    defaultValue: internal_slack_bot_token
     required: false
   - name: SLACK_APP_TOKEN
     inputType: Secret
