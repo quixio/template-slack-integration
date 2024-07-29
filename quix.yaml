@@ -81,3 +81,4 @@ topics:
   - name: slack_messages
     configuration:
       partitions: 1
+  - name: transformed_slack_messages
