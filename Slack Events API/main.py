@@ -10,6 +10,19 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 # visit https://slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
 @app.message("#sarcasm")
 def message_hello(message, say):
+
+    try:
+        # Delete the message
+        app.client.chat_delete(
+            channel=message['channel'],
+            ts=message['ts']
+        )
+        say("Message deleted!")
+    except Exception as e:
+        print(f"Error deleting message: {e}")
+        say("Failed to delete the message.")
+
+
     test_str = str(message["text"][8:])
 
     test_str = "geeksforgeeks"
