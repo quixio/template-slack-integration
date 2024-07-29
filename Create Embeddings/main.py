@@ -37,13 +37,32 @@ def simplify_data(row):
 
 # Define the embedding function
 def create_embeddings(row):
-    text = row['description']
-    embeddings = list(embedding_model.embed([text]))
-    embedding_list = [embedding.tolist() for embedding in embeddings]
-    finalembedding = embedding_list[0]
-    print(f'Created vector: "{finalembedding}"')
 
-    return finalembedding
+    # Values extracted from the JSON
+    text = row["text"]
+    msg_id = str(row["msg_id"])
+    ts = str(row["ts"])
+    user = str(row["user"])
+    is_update = str(row["is_update"])
+
+    # Create embeddings
+    text_embedding = embedding_model.embed([text])  # Wrap in a list for batch processing
+    client_msg_id_embedding = embedding_model.embed([msg_id])
+    ts_embedding = embedding_model.embed([ts])
+    user_embedding = embedding_model.embed([user])
+    is_update_embedding = embedding_model.embed([is_update])
+
+    # Convert embeddings to lists
+    text_embedding_list = text_embedding[0].tolist()  # Assuming embed returns a list of embeddings
+    client_msg_id_embedding_list = client_msg_id_embedding[0].tolist()
+    ts_embedding_list = ts_embedding[0].tolist()
+    user_embedding_list = user_embedding[0].tolist()
+    is_update_embedding_list = is_update_embedding[0].tolist()
+
+    # Combine embeddings into a single vector
+    combined_embedding = text_embedding + client_msg_id_embedding + ts_embedding + user_embedding + is_update_embedding
+
+    return combined_embedding
 
 # Initialize a streaming dataframe based on the stream of messages from the input topic:
 sdf = app.dataframe(topic=input_topic)
