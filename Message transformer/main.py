@@ -34,14 +34,15 @@ def tx_message(data):
     event_ts = float(data['ts'])
 
     # Convert timestamp to human-readable format
-    human_readable_time = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
+    rtn['human_readable_time'] = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
 
-    return {
-        "message_id": rtn['msg_id'],
-        "timestamp": human_readable_time,
-        "user": rtn['user'],
-        "message": rtn['text']
-    }
+    print(rtn)
+    # return {
+    #     "message_id": rtn['msg_id'],
+    #     "timestamp": human_readable_time,
+    #     "user": rtn['user'],
+    #     "message": rtn['text']
+    # }
 
 
 # put transformation logic here
