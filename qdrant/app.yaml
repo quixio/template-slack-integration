@@ -9,7 +9,7 @@ variables:
   - name: qd_collection
     inputType: FreeText
     description: The db name
-    defaultValue: test_db
+    defaultValue: slack_messages
     required: true
   - name: qd_api_key
     inputType: Secret
