@@ -40,13 +40,7 @@ def tx_message(data):
     # Convert timestamp to human-readable format
     rtn['human_readable_time'] = datetime.fromtimestamp(int(rtn['ts'])).strftime('%Y-%m-%d %H:%M:%S')
 
-    print(rtn)
-    # return {
-    #     "message_id": rtn['msg_id'],
-    #     "timestamp": human_readable_time,
-    #     "user": rtn['user'],
-    #     "message": rtn['text']
-    # }
+    return rtn
 
 
 # put transformation logic here
