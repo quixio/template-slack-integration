@@ -22,7 +22,7 @@ def message_hello(message, say):
 
 @app.event("message")
 def handle_message_events(body, logger):
-    print(body)
+    producer.produce(topic.name, json.dumps(body), "messages")
 
 # Start your app
 if __name__ == "__main__":
