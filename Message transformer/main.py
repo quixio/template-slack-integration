@@ -15,6 +15,10 @@ sdf = app.dataframe(input_topic)
 # sdf.filter(lambda msg: msg)
 
 def tx_message(data):
+    print("---------------")
+    print(data)
+    print("---------------")
+    
     user = data['user']
     text = data['text']
     event_ts = float(data['event_ts'])  # Convert to float for datetime
