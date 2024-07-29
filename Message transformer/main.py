@@ -6,7 +6,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v16", auto_offset_reset="earliest")
+import uuid
+app = Application(consumer_group="transformation-v16"+str(uuid.uuid4()), auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
