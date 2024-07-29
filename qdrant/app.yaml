@@ -21,6 +21,11 @@ variables:
     description: The db name
     defaultValue: test_db
     required: true
+  - name: qd_api_key
+    inputType: Secret
+    description: ''
+    defaultValue: qd_api_key
+    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
