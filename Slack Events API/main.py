@@ -8,11 +8,13 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 # Listens to incoming messages that contain "hello"
 # To learn available listener arguments,
 # visit https://slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
-@app.message("turtle-soup")
+@app.message("#sarcasm")
 def message_hello(message, say):
+
     # say() sends a message to the channel where the event was triggered
     say(f"Hey there <@{message['user']}>!")
-    print("rx message")
+    # say(f"{message['text']}")
+    print("rx message" + message)
 
 # Start your app
 if __name__ == "__main__":
