@@ -1,42 +1,18 @@
 import os
-import datetime
-import json
-from flask import Flask, request, Response
-from waitress import serve
+from slack_bolt import App
+from slack_bolt.adapter.socket_mode import SocketModeHandler
 
-from setup_logging import get_logger
+# Initializes your app with your bot token and socket mode handler
+app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
-from quixstreams import Application
+# Listens to incoming messages that contain "hello"
+# To learn available listener arguments,
+# visit https://slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
+@app.message("hello")
+def message_hello(message, say):
+    # say() sends a message to the channel where the event was triggered
+    say(f"Hey there <@{message['user']}>!")
 
-# for local dev, load env vars from a .env file
-from dotenv import load_dotenv
-load_dotenv()
-
-quix_app = Application()
-topic =  quix_app.topic(os.environ["output"])
-producer = quix_app.get_producer()
-
-logger = get_logger()
-
-app = Flask(__name__)
-
-
-@app.route("/data/", methods=['POST'])
-def post_data():
-    
-    data = request.json
-
-    print(data)
-
-    logger.info(f"{str(datetime.datetime.utcnow())} posted.")
-    
-    producer.produce(topic.name, json.dumps(data), "hello-world-stream")
-
-    response = Response(status=200)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-
-    return response
-
-
-if __name__ == '__main__':
-    serve(app, host="0.0.0.0", port=80)
+# Start your app
+if __name__ == "__main__":
+    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
