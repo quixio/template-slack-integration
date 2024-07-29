@@ -35,10 +35,10 @@ def tx_message(data):
     human_readable_time = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
 
     return {
-        "message_id": msg_id,
+        "message_id": rtn['msg_id'],
         "timestamp": human_readable_time,
-        "user": user,
-        "message": text
+        "user": rtn['user'],
+        "message": rtn['text']
     }
 
 
