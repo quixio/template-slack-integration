@@ -26,6 +26,11 @@ variables:
     description: ''
     defaultValue: qd_api_key
     required: true
+  - name: qd_host
+    inputType: FreeText
+    description: ''
+    defaultValue: https://9c7bf8e0-6c92-47a0-bd44-800a087fcc68.europe-west3-0.gcp.cloud.qdrant.io
+    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
