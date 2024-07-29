@@ -1,6 +1,7 @@
 import os
 from quixstreams import Application
 from datetime import datetime
+import uuid
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -38,7 +39,7 @@ def tx_message(data):
         
     # Convert timestamp to human-readable format
     rtn['human_readable_time'] = datetime.fromtimestamp(int(rtn['ts'])).strftime('%Y-%m-%d %H:%M:%S')
-
+    rtn['id'] = uuid.uuid4()
     return rtn
 
 
