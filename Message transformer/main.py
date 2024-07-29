@@ -19,14 +19,21 @@ def tx_message(data):
     print(data)
     print("---------------")
 
-    user = data['user']
-    text = data['text']
-    event_ts = float(data['event_ts'])  # Convert to float for datetime
+    if 'event' in data and data['event'].get('type') == 'message' and data['event'].get('subtype') == 'message_changed':
+        updated_text = data['event']['message']['text']
+        print(f"Updated Slack Message: {updated_text}")
+    else:
+        user = data['user']
+        text = data['text']
+        msg_id = data['client_msg_id']
+    
+    event_ts = float(data['ts'])
 
     # Convert timestamp to human-readable format
     human_readable_time = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
 
     return {
+        "message_id": msg_id,
         "timestamp": human_readable_time,
         "user": user,
         "message": text
