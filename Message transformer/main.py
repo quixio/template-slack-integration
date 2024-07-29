@@ -22,11 +22,13 @@ def tx_message(data):
     # Convert timestamp to human-readable format
     human_readable_time = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
 
-    return {
+    rtn {
         "timestamp": human_readable_time,
         "user": user,
         "message": text
     }
+    print(rtn)
+    return rtn
 
 
 # put transformation logic here
