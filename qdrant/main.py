@@ -9,7 +9,10 @@ host = os.getenv("qd_host", "")
 port = os.getenv("qd_port", "")
 collection = os.getenv("qd_collection", "")
 
-qdrant = QdrantClient(host=host, port=port)
+qdrant = QdrantClient(
+    url="https://9c7bf8e0-6c92-47a0-bd44-800a087fcc68.europe-west3-0.gcp.cloud.qdrant.io:6333", 
+    api_key=os.getenv("qd_api_key"),
+)
 collection = collection
 
 # Create collection to store items
