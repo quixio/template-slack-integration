@@ -10,7 +10,7 @@ port = os.getenv("qd_port", "")
 collection = os.getenv("qd_collection", "")
 
 qdrant = QdrantClient(
-    url="https://9c7bf8e0-6c92-47a0-bd44-800a087fcc68.europe-west3-0.gcp.cloud.qdrant.io:6333", 
+    url=f"{host}:6333", 
     api_key=os.getenv("qd_api_key"),
 )
 collection = collection
