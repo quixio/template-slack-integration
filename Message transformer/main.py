@@ -25,9 +25,9 @@ def tx_message(data):
         rtn['updated_text'] = data['event']['message']['text']
         rtn['client_msg_id'] = data['event']['message']['client_msg_id']
     else:
-        user = data['user']
-        text = data['text']
-        msg_id = data['client_msg_id']
+        rtn['user'] = data['user']
+        rtn['text'] = data['text']
+        rtn['msg_id'] = data['client_msg_id']
     
     event_ts = float(data['ts'])
 
