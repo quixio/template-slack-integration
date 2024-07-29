@@ -6,7 +6,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v15", auto_offset_reset="earliest")
+app = Application(consumer_group="transformation-v16", auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
@@ -18,7 +18,7 @@ def tx_message(data):
     print("---------------")
     print(data)
     print("---------------")
-    
+
     user = data['user']
     text = data['text']
     event_ts = float(data['event_ts'])  # Convert to float for datetime
