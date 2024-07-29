@@ -11,6 +11,16 @@ input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
+# sdf.filter(lambda msg: msg)
+
+def tx_message(data):
+    user = data['user']
+    text = data['text']
+    return {
+        "user": user,
+        "message": text
+    }
+
 
 # put transformation logic here
 # see docs for what you can do
