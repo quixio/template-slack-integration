@@ -24,7 +24,7 @@ def tx_message(data):
 
     # handle message edits
     if 'event' in data and data['event'].get('type') == 'message' and data['event'].get('subtype') == 'message_changed':
-        user = data['event']['message']['user']
+        rtn['user'] = data['event']['message']['user']
         rtn['text'] = data['event']['message']['text']
         rtn['msg_id'] = data['event']['message']['client_msg_id']
         rtn['ts'] = float(data['event']['message']['ts'])
