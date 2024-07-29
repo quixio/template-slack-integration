@@ -14,7 +14,7 @@ def message_hello(message, say):
     # say() sends a message to the channel where the event was triggered
     say(f"Hey there <@{message['user']}>!")
     # say(f"{message['text']}")
-    print("rx message" + message)
+    print("rx message" + message["text"])
 
 # Start your app
 if __name__ == "__main__":
