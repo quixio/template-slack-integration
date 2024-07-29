@@ -1,4 +1,5 @@
-quixstreams<2.6
+quixstreams==2.8
+slack_bolt
 flask
 flask_cors
 waitress
