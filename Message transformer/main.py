@@ -36,7 +36,7 @@ def tx_message(data):
         rtn['ts'] = float(data['ts'])
 
     # Convert timestamp to human-readable format
-    rtn['human_readable_time'] = datetime.fromtimestamp(event_ts).strftime('%Y-%m-%d %H:%M:%S')
+    rtn['human_readable_time'] = datetime.fromtimestamp(rtn['ts']).strftime('%Y-%m-%d %H:%M:%S')
 
     print(rtn)
     # return {
