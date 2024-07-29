@@ -101,3 +101,4 @@ topics:
     configuration:
       partitions: 1
   - name: transformed_slack_messages
+  - name: embeddings
