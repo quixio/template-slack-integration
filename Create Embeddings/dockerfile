@@ -1,12 +1,25 @@
-FROM python:3.11.1-slim-buster
+FROM python:3.11-slim-bookworm
 
-# Set environment variables to non-interactive and unbuffered output
+RUN apt-get update -y && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
+
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=UTF-8
+    PYTHONIOENCODING=UTF-8 \
+    PYTHONDONTWRITEBYTECODE 1
 
-# Set the working directory inside the container
+# Install poetry for packages management
+RUN python -m pip install -U pip poetry
+RUN poetry config virtualenvs.create false
+
+# Use /app as the working directory
 WORKDIR /app
+
+# Copy poetry files & install the dependencies
+COPY ./pyproject.toml /app
+COPY ./poetry.lock /app
+
+RUN poetry install --no-interaction --no-ansi --no-root --without dev
+RUN python -c 'from fastembed.embedding import DefaultEmbedding; DefaultEmbedding("sentence-transformers/all-MiniLM-L6-v2")'
 
 # Copy only the requirements file(s) to leverage Docker cache
 # Assuming all requirements files are in the root or subdirectories
