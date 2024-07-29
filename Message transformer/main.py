@@ -26,7 +26,7 @@ def tx_message(data):
     if 'event' in data and data['event'].get('type') == 'message' and data['event'].get('subtype') == 'message_changed':
         rtn['updated_text'] = data['event']['message']['text']
         rtn['client_msg_id'] = data['event']['message']['client_msg_id']
-        rtn['ts'] = data['event']['message']['ts']
+        rtn['ts'] = float(data['event']['message']['ts'])
 
     else:
         # handle original messages
@@ -36,7 +36,7 @@ def tx_message(data):
         rtn['ts'] = float(data['ts'])
 
     # Convert timestamp to human-readable format
-    rtn['human_readable_time'] = datetime.fromtimestamp(rtn['ts']).strftime('%Y-%m-%d %H:%M:%S')
+    rtn['human_readable_time'] = datetime.fromtimestamp(int(rtn['ts'])).strftime('%Y-%m-%d %H:%M:%S')
 
     print(rtn)
     # return {
