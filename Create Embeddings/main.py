@@ -52,13 +52,6 @@ def create_embeddings(row):
     user_embedding = embedding_model.embed([user])
     is_update_embedding = embedding_model.embed([is_update])
 
-    # Convert embeddings to lists
-    text_embedding_list = text_embedding[0].tolist()  # Assuming embed returns a list of embeddings
-    client_msg_id_embedding_list = client_msg_id_embedding[0].tolist()
-    ts_embedding_list = ts_embedding[0].tolist()
-    user_embedding_list = user_embedding[0].tolist()
-    is_update_embedding_list = is_update_embedding[0].tolist()
-
     # Combine embeddings into a single vector
     combined_embedding = text_embedding + client_msg_id_embedding + ts_embedding + user_embedding + is_update_embedding
 
