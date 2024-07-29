@@ -35,9 +35,9 @@ else:
 def ingest_vectors(row):
 
   single_record = models.PointStruct(
-    id=row['id'],
-    vector=row['embeddings'],
-    payload={key: row[key] for key in ['name', 'description', 'author', 'year']}
+        id=row['id'],
+        vector=row['embeddings'],
+        payload={key: row[key] for key in ['name', 'description', 'author', 'year']}
     )
 
   qdrant.upload_points(
