@@ -54,3 +54,6 @@ topics:
       retentionInMinutes: -1
       retentionInBytes: 110100480
   - name: count
+  - name: slack_messages
+    configuration:
+      partitions: 1
