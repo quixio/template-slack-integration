@@ -11,7 +11,7 @@ variables:
     description: ''
     defaultValue: slack_bot_token
     required: false
-  - name: slack_app_token
+  - name: SLACK_APP_TOKEN
     inputType: Secret
     description: ''
     defaultValue: internal_slack_app_token
