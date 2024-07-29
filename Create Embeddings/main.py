@@ -72,6 +72,8 @@ sdf["embeddings"] = sdf.apply(create_embeddings, stateful=False)
 # Update the timestamp column to the current time in nanoseconds
 sdf["Timestamp"] = sdf.apply(lambda row: time.time_ns())
 
+sdf["Timestamp"] = sdf.apply(lambda row: print(row))
+
 # Publish the processed SDF to a Kafka topic specified by the output_topic object.
 # sdf = sdf.to_topic(output_topic)
 
