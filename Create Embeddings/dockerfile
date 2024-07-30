@@ -4,8 +4,7 @@ RUN apt-get update -y && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=UTF-8 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONIOENCODING=UTF-8
 
 # Install poetry for packages management
 RUN python -m pip install -U pip poetry
