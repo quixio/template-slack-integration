@@ -119,5 +119,7 @@ topics:
   - name: slack_messages
     configuration:
       partitions: 1
+      retentionInMinutes: -1
+      retentionInBytes: 1048576000
   - name: transformed_slack_messages
   - name: embeddings
