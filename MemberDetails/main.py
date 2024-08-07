@@ -51,7 +51,7 @@ def fn(data):
 def init_fn():
     return {}
 
-sdf = sdf.hopping_window(timedelta(hours=1), step_ms=timedelta(hours=1)).reduce(fn, initializer=init_fn)
+sdf = sdf.hopping_window(timedelta(hours=1), step_ms=timedelta(minutes=30)).reduce(fn, initializer=init_fn)
 
 # sdf = sdf.apply(fn)
 # sdf = sdf.update(fn)
