@@ -26,7 +26,9 @@ sdf = app.dataframe(input_topic)
 
 def fn(data):
     print("------------------")
-    print(f"{data['profile']}")
+    print(f"{data['real_name']}")
+    print(f"{data['display_name']}")
+    print(f"{data['tz']}")
 
 sdf = sdf.apply(fn)
 
