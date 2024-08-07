@@ -64,6 +64,10 @@ def main():
 
                     json_data = json.dumps(member)  # convert the row to JSON
 
+                    response = slack_client.users_profile_get(user=member['user_id'])
+                    profile = response['profile']
+                    json_data["email"] = profile.get('email')
+
                     # publish the data to the topic
                     producer.produce(
                         topic=topic.name,
