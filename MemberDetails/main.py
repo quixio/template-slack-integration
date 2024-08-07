@@ -1,6 +1,7 @@
 import os
 from quixstreams import Application
 from datetime import timedelta
+import json
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -26,7 +27,10 @@ sdf = app.dataframe(input_topic)
 
 def fn(data):
     print("------------------")
-    print(data)
+    json_object = json.loads(data)
+    json_formatted_str = json.dumps(json_object, indent=2)
+    print(json_formatted_str)
+
     print("++++++++++++++++++")
     print(f"{data['real_name']}")
     print(f"{data['display_name']}")
