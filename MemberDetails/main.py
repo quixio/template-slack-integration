@@ -24,6 +24,11 @@ sdf = app.dataframe(input_topic)
 #     .final()
 # )
 
+def fn(data):
+    print(f"{data['profile']}")
+
+sdf = sdf.apply(fn)
+
 sdf = sdf.update(lambda row: print(row))
 
 # sdf = sdf.to_topic(output_topic)
