@@ -26,13 +26,15 @@ sdf = app.dataframe(input_topic)
 
 def fn(data):
     print("------------------")
+    print(data)
+    print("++++++++++++++++++")
     print(f"{data['real_name']}")
     print(f"{data['display_name']}")
     print(f"{data['tz']}")
 
 sdf = sdf.apply(fn)
 
-sdf = sdf.update(lambda row: print(row))
+# sdf = sdf.update(lambda row: print(row))
 
 # sdf = sdf.to_topic(output_topic)
 
