@@ -32,13 +32,21 @@ def fn(data):
     print(json_formatted_str)
 
     print("++++++++++++++++++")
+
+    profile_data = {}
+
     if 'profile' in data:
         if 'real_name' in data['profile']:
+            profile_data["real_name"] = f"{data['profile']['real_name']}"
             print(f"{data['profile']['real_name']}")
         if 'display_name' in data['profile']:
             print(f"{data['profile']['display_name']}")
+            profile_data["display_name"] = f"{data['profile']['display_name']}"
     if 'tz' in data:
         print(f"{data['tz']}")
+        profile_data["timezone"] = f"{data['tz']}"
+
+    return profile_data
 
 sdf = sdf.apply(fn)
 
