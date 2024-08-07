@@ -68,6 +68,8 @@ def main():
                     profile = response['profile']
                     json_data["email"] = profile.get('email')
 
+                    time.sleep(40)
+
                     # publish the data to the topic
                     # producer.produce(
                     #     topic=topic.name,
