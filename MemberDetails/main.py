@@ -27,7 +27,7 @@ sdf = app.dataframe(input_topic)
 
 def fn(data):
     print("------------------")
-    json_object = json.loads(data)
+    json_object = json.loads(json.dumps(data))
     json_formatted_str = json.dumps(json_object, indent=2)
     print(json_formatted_str)
 
