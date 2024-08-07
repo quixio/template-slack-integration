@@ -69,11 +69,11 @@ def main():
                     json_data["email"] = profile.get('email')
 
                     # publish the data to the topic
-                    producer.produce(
-                        topic=topic.name,
-                        key='slack_members',
-                        value=json_data,
-                    )
+                    # producer.produce(
+                    #     topic=topic.name,
+                    #     key='slack_members',
+                    #     value=json_data,
+                    # )
                     
                 print("All rows published")
         
