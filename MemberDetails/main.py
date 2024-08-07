@@ -25,6 +25,7 @@ sdf = app.dataframe(input_topic)
 # )
 
 def fn(data):
+    print("------------------")
     print(f"{data['profile']}")
 
 sdf = sdf.apply(fn)
