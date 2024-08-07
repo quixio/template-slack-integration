@@ -69,7 +69,7 @@ def main():
                     #json_data["email"] = 
                     print("---------------")
                     print(profile)
-                    print(profile["email"])
+                    print(profile.get("email"))
                     print("---------------")
 
                     time.sleep(5)
