@@ -6,7 +6,8 @@ from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v2", auto_offset_reset="earliest")
+from uuid import uuid4
+app = Application(consumer_group="transformation-v2"+str(uuid4()), auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
@@ -25,7 +26,7 @@ sdf = (
 
 sdf = sdf.update(lambda row: print(row))
 
-sdf = sdf.to_topic(output_topic)
+# sdf = sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)
