@@ -29,29 +29,35 @@ def fn(data):
     print("------------------")
     json_object = json.loads(json.dumps(data))
     json_formatted_str = json.dumps(json_object, indent=2)
-    print(json_formatted_str)
+    # print(json_formatted_str)
 
-    print("++++++++++++++++++")
+    # print("++++++++++++++++++")
 
     profile_data = {}
 
     if 'profile' in data:
         if 'real_name' in data['profile']:
-            profile_data["real_name"] = f"{data['profile']['real_name']}"
-            print(f"{data['profile']['real_name']}")
+            # profile_data["real_name"] = f"{data['profile']['real_name']}"
+            print(f"{data['profile']['real_name']}, ", end="")
+        else:
+            print(",", end="")
         if 'display_name' in data['profile']:
-            print(f"{data['profile']['display_name']}")
-            profile_data["display_name"] = f"{data['profile']['display_name']}"
+            print(f"{data['profile']['display_name']}, ", end="")
+            # profile_data["display_name"] = f"{data['profile']['display_name']}"
+        else:
+            print(",", end="")
     if 'tz' in data:
         print(f"{data['tz']}")
-        profile_data["timezone"] = f"{data['tz']}"
+        # profile_data["timezone"] = f"{data['tz']}"
+    else:
+        print("")
 
     return profile_data
 
 def init_fn():
     return {}
 
-sdf = sdf.hopping_window(timedelta(hours=1), step_ms=timedelta(minutes=30)).reduce(fn, initializer=init_fn)
+# sdf = 
 
 # sdf = sdf.apply(fn)
 # sdf = sdf.update(fn)
