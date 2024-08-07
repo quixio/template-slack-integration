@@ -32,9 +32,9 @@ def fn(data):
     print(json_formatted_str)
 
     print("++++++++++++++++++")
-    print(f"{data['real_name']}")
-    print(f"{data['display_name']}")
-    print(f"{data['tz']}")
+    print(f"{data['profile']['real_name']}")
+    print(f"{data['profile']['display_name']}")
+    print(f"{data['profile']['tz']}")
 
 sdf = sdf.apply(fn)
 
