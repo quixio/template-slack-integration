@@ -56,7 +56,7 @@ sdf = sdf.hopping_window(timedelta(hours=1), step_ms=timedelta(minutes=30)).redu
 # sdf = sdf.apply(fn)
 # sdf = sdf.update(fn)
 
-sdf = sdf.update(lambda row: print(row))
+# sdf = sdf.update(lambda row: print(row))
 
 # sdf = sdf.to_topic(output_topic)
 
