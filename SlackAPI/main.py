@@ -66,7 +66,8 @@ def main():
 
                     response = slack_client.users_profile_get(user = member['id'])
                     profile = response['profile']
-                    json_data["email"] = profile.get('email')
+                    #json_data["email"] = 
+                    print(profile.get('email'))
 
                     time.sleep(40)
 
