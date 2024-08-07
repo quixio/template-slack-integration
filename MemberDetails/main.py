@@ -59,7 +59,7 @@ def init_fn():
 
 # sdf = 
 
-# sdf = sdf.apply(fn)
+sdf = sdf.apply(fn)
 # sdf = sdf.update(fn)
 
 # sdf = sdf.update(lambda row: print(row))
