@@ -9,6 +9,11 @@ variables:
   - name: output
     inputType: OutputTopic
     description: Name of the output topic to write to.
+    defaultValue: count
+    required: false
+  - name: members
+    inputType: OutputTopic
+    description: Name of the output topic to write to.
     defaultValue: member_details
     required: false
 dockerfile: dockerfile
