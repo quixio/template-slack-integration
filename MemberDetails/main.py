@@ -34,7 +34,7 @@ def fn(data):
     print("++++++++++++++++++")
     print(f"{data['profile']['real_name']}")
     print(f"{data['profile']['display_name']}")
-    print(f"{data['profile']['tz']}")
+    print(f"{data['tz']}")
 
 sdf = sdf.apply(fn)
 
