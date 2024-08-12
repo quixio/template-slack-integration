@@ -123,3 +123,6 @@ topics:
       retentionInBytes: 1048576000
   - name: transformed_slack_messages
   - name: embeddings
+  - name: transactions-output
+    configuration:
+      partitions: 1
