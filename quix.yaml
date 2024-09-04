@@ -126,3 +126,4 @@ topics:
   - name: transactions-output
     configuration:
       partitions: 1
+  - name: token_messages
