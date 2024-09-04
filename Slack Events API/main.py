@@ -12,6 +12,12 @@ producer = quix_app.get_producer()
 # Initializes your app with your bot token and socket mode handler
 slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
+
+@slack_app.command("/my-token")
+def handle_some_command(ack, body, logger):
+    ack()
+    logger.info(body)
+
 # Listens to incoming messages
 @slack_app.message("")
 def message_hello(message, say):
