@@ -7,7 +7,7 @@ from quixstreams import Application
 
 quix_app = Application()
 topic =  quix_app.topic(os.environ["output"])
-token_topic =  quix_app.topic(os.environ["output"])
+token_topic =  quix_app.topic(os.environ["token_messages"])
 producer = quix_app.get_producer()
 
 # Initializes your app with your bot token and socket mode handler
