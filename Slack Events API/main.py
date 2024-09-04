@@ -25,6 +25,4 @@ def handle_message_events(body, logger):
 
 # Start your app
 if __name__ == "__main__":
-    # SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
-    tkn = 'xapp-1-A07DQ9Z6VUK-7677745874963-04d1fbd0fb5565bf2d833853ff6a7f91740fe586107bf75f988b9edaa5f741ef'
-    SocketModeHandler(slack_app, tkn).start()
+    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
