@@ -14,8 +14,9 @@ slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 
 @slack_app.command("/my-token")
-def handle_some_command(ack, body, logger):
+def handle_some_command(ack, body, logger, say):
     ack()
+    say("hi!")
     print(body)
 
 # Listens to incoming messages
