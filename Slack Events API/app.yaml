@@ -16,6 +16,11 @@ variables:
     description: ''
     defaultValue: internal_slack_app_token
     required: false
+  - name: token_messages
+    inputType: OutputTopic
+    description: ''
+    defaultValue: token_messages
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
