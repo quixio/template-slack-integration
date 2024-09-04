@@ -7,6 +7,7 @@ from quixstreams import Application
 
 quix_app = Application()
 topic =  quix_app.topic(os.environ["output"])
+token_topic =  quix_app.topic(os.environ["output"])
 producer = quix_app.get_producer()
 
 # Initializes your app with your bot token and socket mode handler
@@ -18,6 +19,8 @@ def handle_some_command(ack, body, logger, say):
     ack()
     say("hi!")
     print(body)
+    producer.produce(token_topic.name, json.dumps(body), "token_messages")
+
 
 # Listens to incoming messages
 @slack_app.message("")
