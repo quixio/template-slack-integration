@@ -27,7 +27,7 @@ def handle_some_command(ack, body, logger, say):
 
     def is_valid_email(text):
         email = extract_email(text).strip()
-        print(email)
+        print(f'--{email}--')
         return validate_email(email)
         
     def validate_json(input, field_name):
