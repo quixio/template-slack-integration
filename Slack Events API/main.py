@@ -39,6 +39,18 @@ def send_email(subject, body, to_email, from_email, smtp_server, smtp_port, logi
 @slack_app.command("/my-token")
 def handle_some_command(ack, body, logger, say):
 
+    # Example usage
+    subject = "Test Email"
+    body = "This is a test email."
+    to_email = "recipient@example.com"
+    from_email = "your_email@gmail.com"
+    smtp_server = "smtp.gmail.com"
+    smtp_port = 465
+    login = "your_email@gmail.com"
+    password = "your_password"
+
+    # send_email(subject, body, to_email, from_email, smtp_server, smtp_port, login, password)
+
     msg = "Please try again and let us know your email address along with your request, so we can contact you if you win a prize"
 
     def extract_email(text):
