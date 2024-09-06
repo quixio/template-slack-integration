@@ -80,6 +80,9 @@ def handle_some_command(ack, body, logger, say):
         #     producer.produce(token_topic.name, json.dumps(body), "token_request_verification")
 
         say("Okay.. I'll assume your email address is valid.. sending you an email!")
+        subject = ""
+        body = ""
+        to_email = email
         send_email(subject, body, to_email, from_email, smtp_server, smtp_port, login, password)
         
     ack()
