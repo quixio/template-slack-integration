@@ -68,6 +68,11 @@ deployments:
         description: ''
         required: false
         secretKey: internal_slack_app_token
+      - name: token_messages
+        inputType: OutputTopic
+        description: ''
+        required: false
+        value: token_messages
   - name: Message transformer
     application: Message transformer
     version: latest
