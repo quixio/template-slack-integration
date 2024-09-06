@@ -46,8 +46,8 @@ def handle_some_command(ack, body, logger, say):
     from_email = "your_email@gmail.com"
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
-    login = "your_email@gmail.com"
-    password = "your_password"
+    login = os.environ["gmail_username"]
+    password = os.environ["gmail_password"]
 
     # send_email(subject, body, to_email, from_email, smtp_server, smtp_port, login, password)
 
