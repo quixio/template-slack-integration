@@ -3,6 +3,7 @@ import json
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from validate_email import validate_email
+import re
 
 from quixstreams import Application
 
@@ -20,7 +21,12 @@ def handle_some_command(ack, body, logger, say):
 
     msg = "Please try again and let us know your email address along with your request, so we can contact you if you win a prize"
 
-    def is_valid_email(email):
+    def extract_email(text):
+        match = re.search(r'<mailto:(.*?)(?:\|.*?)?>', text)
+        return match.group(1) if match else text
+
+    def is_valid_email(text):
+        email = extract_email(text).strip()    
         return validate_email(email)
         
     def validate_json(input, field_name):
