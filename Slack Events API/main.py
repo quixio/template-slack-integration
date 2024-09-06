@@ -41,10 +41,10 @@ def handle_some_command(ack, body, logger, say):
         email = body.get('text').strip()
         print(email)
         if is_valid_email(email):
-            print("Valid email address")
+            print("Invalid email address")
             say(f"Hi! Thanks for requesting an affiliate token. {msg}.")
         else:
-            print("Invalid email address")
+            print("Valid email address")
             say(f"Hi! Thanks for requesting an affiliate token. We have emailed you a verification link.")
             producer.produce(token_topic.name, json.dumps(body), "token_request_verification")
         
