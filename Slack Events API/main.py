@@ -41,9 +41,7 @@ def handle_some_command(ack, body, logger, say):
         else:
             print("Invalid email address")
             say(f"Hi! Thanks for requesting an affiliate token. {msg}.")
-
-          
-        
+       
         
     ack()
 
