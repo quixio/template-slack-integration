@@ -26,7 +26,8 @@ def handle_some_command(ack, body, logger, say):
         return match.group(1) if match else text
 
     def is_valid_email(text):
-        email = extract_email(text).strip()    
+        email = extract_email(text).strip()
+        print(email)
         return validate_email(email)
         
     def validate_json(input, field_name):
@@ -39,7 +40,7 @@ def handle_some_command(ack, body, logger, say):
         say(val_error)
     else:
         email = body.get('text').strip()
-        print(email)
+        
         if is_valid_email(email):
             print("Invalid email address")
             say(f"Hi! Thanks for requesting an affiliate token. {msg}.")
