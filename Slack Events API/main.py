@@ -32,7 +32,7 @@ def handle_some_command(ack, body, logger, say):
     if val_error != None:
         say(val_error)
     else:
-        email = input.get('text').strip()
+        email = body.get('text').strip()
 
         if is_valid_email(email):
             print("Valid email address")
