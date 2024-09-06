@@ -27,8 +27,8 @@ def handle_some_command(ack, body, logger, say):
 
     def is_valid_email(text):
         email = extract_email(text).strip()
-        print(f'--{email}--')
-        return validate_email(email)
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(pattern, email) is not None
         
     def validate_json(input, field_name):
         if not input.get(field_name):
