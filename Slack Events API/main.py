@@ -19,7 +19,7 @@ def handle_some_command(ack, body, logger, say):
 
     def validate_json(input, field_name):
         if not input.get(field_name):
-            return f"The {field_name} field is blank."
+            return f"Hi there! Please try again and let us know your email address along with your request, so we can contact you if you win a prize."
            
     
     val_error = validate_json(body, 'text')
