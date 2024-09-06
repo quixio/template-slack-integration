@@ -19,7 +19,7 @@ def handle_some_command(ack, body, logger, say):
 
     def validate_json(input, field_name):
         if not input.get(field_name):
-            return ValueError(f"The {field_name} field is blank.")
+            return f"The {field_name} field is blank."
            
     
     val_error = validate_json(body, 'text')
