@@ -17,8 +17,6 @@ slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 @slack_app.command("/my-token")
 def handle_some_command(ack, body, logger, say):
 
-    ack()
-
     def validate_json(input, field_name):
         if not input.get(field_name):
             return f"Hi there! Please try again and let us know your email address along with your request, so we can contact you if you win a prize."      
@@ -27,12 +25,11 @@ def handle_some_command(ack, body, logger, say):
 
     if val_error != '':
         say(val_error)
-        return
-
-    say("Hi! Thanks for requesting an affiliate token. We have emailed it to you.")
-    print(body)
-    producer.produce(token_topic.name, json.dumps(body), "token_messages")
-
+    else:
+        say("Hi! Thanks for requesting an affiliate token. We have emailed it to you.")
+        print(body)
+        producer.produce(token_topic.name, json.dumps(body), "token_messages")
+    ack()
 
 # Listens to incoming messages
 @slack_app.message("")
