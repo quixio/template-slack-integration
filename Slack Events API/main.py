@@ -40,10 +40,10 @@ def send_email(subject, body, to_email, from_email, smtp_server, smtp_port, logi
 def handle_some_command(ack, body, logger, say):
 
     # Example usage
-    subject = "Test Email"
-    body = "This is a test email."
-    to_email = "recipient@example.com"
-    from_email = "your_email@gmail.com"
+    # subject = "Test Email"
+    # body = "This is a test email."
+    # to_email = "recipient@example.com"
+    from_email = "devrel@gmail.com"
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
     login = os.environ["gmail_username"]
