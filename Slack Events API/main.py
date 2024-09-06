@@ -19,6 +19,7 @@ def handle_some_command(ack, body, logger, say):
     ack()
     say("hi!")
     print(body)
+    print(body == None)
     producer.produce(token_topic.name, json.dumps(body), "token_messages")
 
 
