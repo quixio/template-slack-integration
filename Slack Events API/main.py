@@ -16,10 +16,21 @@ slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 @slack_app.command("/my-token")
 def handle_some_command(ack, body, logger, say):
+
+    def validate_json(input, field_name):
+        if not input.get(field_name):
+            return ValueError(f"The {field_name} field is blank.")
+           
+    
+    val_error = validate_json(body, 'text')
+
+    if val_error != '':
+        say(val_error)
+        return
+
     ack()
-    say("hi!")
+    say("Hi! Thanks for requesting an affiliate token.")
     print(body)
-    print(body == None)
     producer.produce(token_topic.name, json.dumps(body), "token_messages")
 
 
