@@ -33,7 +33,7 @@ def handle_some_command(ack, body, logger, say):
         say(val_error)
     else:
         email = body.get('text').strip()
-
+        print(email)
         if is_valid_email(email):
             print("Valid email address")
             say(f"Hi! Thanks for requesting an affiliate token. {msg}.")
