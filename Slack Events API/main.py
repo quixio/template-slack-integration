@@ -29,6 +29,7 @@ def handle_some_command(ack, body, logger, say):
         say("Hi! Thanks for requesting an affiliate token. We have emailed it to you.")
         print(body)
         producer.produce(token_topic.name, json.dumps(body), "token_messages")
+        
     ack()
 
 # Listens to incoming messages
