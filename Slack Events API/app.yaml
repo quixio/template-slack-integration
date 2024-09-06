@@ -26,6 +26,11 @@ variables:
     description: ''
     defaultValue: steve@quix.io
     required: false
+  - name: gmail_password
+    inputType: Secret
+    description: ''
+    defaultValue: gmail_password
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
