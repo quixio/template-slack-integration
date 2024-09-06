@@ -18,14 +18,14 @@ slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 @slack_app.command("/my-token")
 def handle_some_command(ack, body, logger, say):
 
-    msg = "Please try again and let us know your email address along with your request, so we can contact you if you win a prize."
+    msg = "Please try again and let us know your email address along with your request, so we can contact you if you win a prize"
 
     def is_valid_email(email):
         return validate_email(email)
         
     def validate_json(input, field_name):
         if not input.get(field_name):
-            return f"Hi there! {msg}"
+            return f"Hi there! {msg}."
     
     val_error = validate_json(body, 'text')
 
@@ -40,7 +40,7 @@ def handle_some_command(ack, body, logger, say):
 
         else:
             print("Invalid email address")
-            say(f"Hi! Thanks for requesting an affiliate token. {msg}")
+            say(f"Hi! Thanks for requesting an affiliate token. {msg}.")
 
             
         print(body)
