@@ -23,7 +23,7 @@ def handle_some_command(ack, body, logger, say):
     
     val_error = validate_json(body, 'text')
 
-    if val_error != '':
+    if val_error != None:
         say(val_error)
     else:
         say("Hi! Thanks for requesting an affiliate token. We have emailed it to you.")
