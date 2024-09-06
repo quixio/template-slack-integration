@@ -36,6 +36,8 @@ def handle_some_command(ack, body, logger, say):
 
         if is_valid_email(email):
             print("Valid email address")
+            say(f"Hi! Thanks for requesting an affiliate token. We have emailed you a verification link.")
+
         else:
             print("Invalid email address")
             say(f"Hi! Thanks for requesting an affiliate token. {msg}")
