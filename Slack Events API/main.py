@@ -49,8 +49,6 @@ def handle_some_command(ack, body, logger, say):
     login = os.environ["gmail_username"]
     password = os.environ["gmail_password"]
 
-    # send_email(subject, body, to_email, from_email, smtp_server, smtp_port, login, password)
-
     msg = "Please try again and let us know your email address along with your request, so we can contact you if you win a prize"
 
     def extract_email(text):
