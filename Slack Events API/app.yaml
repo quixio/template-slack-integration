@@ -21,6 +21,11 @@ variables:
     description: ''
     defaultValue: token_messages
     required: false
+  - name: gmail_username
+    inputType: FreeText
+    description: ''
+    defaultValue: steve@quix.io
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
