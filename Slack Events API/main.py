@@ -4,6 +4,9 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from validate_email import validate_email
 import re
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from quixstreams import Application
 
@@ -15,6 +18,23 @@ producer = quix_app.get_producer()
 # Initializes your app with your bot token and socket mode handler
 slack_app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
+def send_email(subject, body, to_email, from_email, smtp_server, smtp_port, login, password):
+    # Create the email
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+
+    # Attach the body with the msg instance
+    msg.attach(MIMEText(body, 'plain'))
+
+    # Create server object with SSL option
+    server = smtplib.SMTP_SSL(smtp_server, smtp_port)
+
+    # Perform operations via server
+    server.login(login, password)
+    server.sendmail(from_email, to_email, msg.as_string())
+    server.quit()
 
 @slack_app.command("/my-token")
 def handle_some_command(ack, body, logger, say):
