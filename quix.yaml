@@ -57,3 +57,5 @@ topics:
     configuration:
       retentionInMinutes: 7260
   - name: member_details
+    configuration:
+      retentionInMinutes: 7260
