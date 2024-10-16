@@ -50,7 +50,7 @@ def main():
     def to_google(msg):
         print(msg)
 
-        timestamp_ns = int(msg["time"])
+        timestamp_ns = int(msg["start"])
         timestamp_s = timestamp_ns / 1_000_000_000  # Convert nanoseconds to seconds
         human_readable_time = datetime.utcfromtimestamp(timestamp_s).strftime('%Y-%m-%d %H:%M:%S')
 
