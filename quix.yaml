@@ -87,6 +87,25 @@ deployments:
         description: ''
         required: true
         value: daff9f81-8d8a-4ae8-bb48-3676fb4e05e8
+  - name: Event Detection Transformation
+    application: Event Detection Transformation
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: This is the input topic for f1 data
+        required: true
+        value: deployment_logs
+      - name: output
+        inputType: OutputTopic
+        description: This is the output topic for hard braking events
+        required: true
+        value: alert
 
 # This section describes the Topics of the data pipeline
 topics:
