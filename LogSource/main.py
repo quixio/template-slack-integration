@@ -16,6 +16,7 @@ topic_name = os.environ["output"]
 topic = app.topic(topic_name)
 
 def handle_message(deployment_id, message):
+    print(deployment_id)
     # create a pre-configured Producer object.
     with app.get_producer() as producer:
         # publish the data to the topic
