@@ -48,7 +48,7 @@ def reducer_fn(summary, msg):
 def main():
     app = Application(
         loglevel="DEBUG",
-        consumer_group="slack_users",
+        consumer_group="slack_users_v2",
         auto_offset_reset="earliest",
     )
 
