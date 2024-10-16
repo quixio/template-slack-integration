@@ -25,7 +25,7 @@ def handle_message(deployment_id, message):
         producer.produce(
             topic=topic.name,
             key=deployment_id.encode('utf-8'),
-            value=message,
+            value=json.loads(message),
         )
         print("All rows published")
 
