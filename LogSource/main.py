@@ -33,10 +33,10 @@ def stream_logs(deployment_id, base_url, headers=None):
 def main():
 
     # Example usage
-    deployment_id = "your_deployment_id"
+    deployment_id = "daff9f81-8d8a-4ae8-bb48-3676fb4e05e8"
     base_url = "https://portal-api.platform.quix.io"
     headers = {
-        "Authorization": "Bearer your_access_token"  # Add your authorization token if required
+        "Authorization": "Bearer " + os.environ["token"]
     }
 
     stream_logs(deployment_id, base_url, headers)
