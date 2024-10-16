@@ -25,6 +25,7 @@ def get_data():
 def stream_logs(deployment_id, base_url, headers=None):
     url = f"{base_url}/deployments/{deployment_id}/logs/stream"
     
+    print("Deployment logs-----------------------------------------")
     with requests.get(url, headers=headers, stream=True) as response:
         response.raise_for_status()  # Check for HTTP errors
         for line in response.iter_lines():
