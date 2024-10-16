@@ -6,6 +6,11 @@ variables:
     description: Name of the input topic to listen to.
     defaultValue: count
     required: false
+  - name: google_auth_secret_url
+    inputType: Secret
+    description: ''
+    defaultValue: google_auth_secret_url
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
