@@ -70,9 +70,10 @@ def main():
 
     google_api = pygsheets.authorize(service_file='client_secret.json')
 
-    sheet_title="Public Slack User Count"
-    s = google_api.create(sheet_title)
-    s.share(email_or_domain="steve@quix.io")
+    sheet_title="Public Slack User Count NEW"
+    # google_api.open(sheet_title)
+    # s = google_api.create(sheet_title)
+    # s.share(email_or_domain="steve@quix.io")
     workspace = google_api.open(sheet_title)
     sheet = workspace[0]
     sheet.update_values(
