@@ -30,18 +30,19 @@ def get_client_secret():
 
 
 def initializer_fn(msg):
-    count = msg["value"]
+    print(msg)
+    # count = msg["value"]
 
     return {
-        "count": count
+        # "count": count
     }
 
 
 def reducer_fn(summary, msg):
-    count = msg["value"]
+    # count = msg["value"]
 
     return {
-        "count": count
+        # "count": count
     }
 
 
