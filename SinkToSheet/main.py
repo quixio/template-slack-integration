@@ -58,7 +58,7 @@ def main():
             1,
             values=[
                 human_readable_time,
-                str(msg)
+                msg["value"]
             ],
         )
 
