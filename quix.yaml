@@ -52,7 +52,7 @@ topics:
       partitions: 1
       replicationFactor: 2
       retentionInMinutes: -1
-      retentionInBytes: 110100480
+      retentionInBytes: 1000
   - name: count
     configuration:
       retentionInMinutes: 7260
