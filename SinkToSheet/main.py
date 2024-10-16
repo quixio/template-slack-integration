@@ -30,9 +30,8 @@ def reducer_fn(summary, msg):
 
 def main():
     app = Application(
-        broker_address="localhost:9092",
         loglevel="DEBUG",
-        consumer_group="weather_to_google",
+        consumer_group="slack_users",
         auto_offset_reset="earliest",
     )
 
