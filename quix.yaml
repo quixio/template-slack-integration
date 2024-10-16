@@ -66,12 +66,6 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: slack_users
-    configuration:
-      partitions: 1
-      replicationFactor: 2
-      retentionInMinutes: 500
-      retentionInBytes: 1000
   - name: count
     configuration:
       retentionInMinutes: 500
