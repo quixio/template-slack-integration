@@ -52,20 +52,12 @@ def main():
     sdf = sdf.update(lambda msg: logging.debug("Got: %s", msg))
 
     google_api = pygsheets.authorize()
-    workspace = google_api.open("Weather Sheet")
+    workspace = google_api.open("Public Slack UserCount")
     sheet = workspace[0]
-    sheet.update_values(
+        sheet.update_values(
         "A1",
         [
-            [
-                "Start",
-                "End",
-                "Open",
-                "High",
-                "Low",
-                "Close",
-                "Date",
-            ]
+            ["User Count"]
         ],
     )
 
@@ -73,13 +65,7 @@ def main():
         sheet.insert_rows(
             1,
             values=[
-                msg["start"],
-                msg["end"],
-                msg["value"]["open"],
-                msg["value"]["high"],
-                msg["value"]["low"],
-                msg["value"]["close"],
-                "=EPOCHTODATE(A2 / 1000)",
+                msg["value"]["user_count"]
             ],
         )
 
