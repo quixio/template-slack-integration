@@ -43,7 +43,7 @@ def stream_logs(deployment_id, base_url, message_handler, headers=None):
                 for line in response.iter_lines():
                     if line:
                         print(line.decode('utf-8'))
-                        message_handler(deployment_id, {"code": 0, "message": line.decode('utf-8')})
+                        message_handler(deployment_id, json.dumps({"code": 0, "message": line.decode('utf-8')}))
         except requests.exceptions.RequestException as e:
             print(f"Error accessing logs: {e}")
             message_handler(deployment_id, {"code": 1, "message": "Deployment is offline"})
