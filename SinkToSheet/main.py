@@ -5,13 +5,7 @@ from datetime import timedelta
 import pygsheets
 import os
 import requests
-
-# incomming data
-# {
-#   "start": 1729085226000,
-#   "end": 1729085227000,
-#   "value": 510
-# }
+from datetime import datetime
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -74,10 +68,16 @@ def main():
 
     def to_google(msg):
         print(msg)
+
+        timestamp_ns = msg["time"]
+        timestamp_s = timestamp_ns / 1_000_000_000  # Convert nanoseconds to seconds
+        human_readable_time = datetime.utcfromtimestamp(timestamp_s).strftime('%Y-%m-%d %H:%M:%S')
+
+
         sheet.insert_rows(
             1,
             values=[
-                msg["time"],
+                human_readable_time,
                 msg["used_percent"]
             ],
         )
