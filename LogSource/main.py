@@ -4,7 +4,7 @@ from quixstreams import Application  # import the Quix Streams modules for inter
 # import additional modules as needed
 import os
 import requests
-
+import json
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
 load_dotenv()
