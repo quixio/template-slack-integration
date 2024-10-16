@@ -55,7 +55,7 @@ topics:
       retentionInBytes: 1000
   - name: count
     configuration:
-      retentionInMinutes: 7260
+      retentionInMinutes: 500
   - name: member_details
     configuration:
-      retentionInMinutes: 7260
+      retentionInMinutes: 500
