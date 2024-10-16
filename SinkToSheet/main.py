@@ -57,24 +57,12 @@ def main():
 
     sdf = app.dataframe(input_topic)
 
-    # sdf = sdf.group_into_hourly_batches(...)
-    #sdf = sdf.tumbling_window(duration_ms=timedelta(hours=12))
-
-    # sdf = sdf.summarize_that_hour(...)
-    # sdf = sdf.reduce(
-    #     initializer=initializer_fn,
-    #     reducer=reducer_fn,
-    # )
-    # sdf = sdf.final()
-
     sdf = sdf.update(lambda msg: logging.debug("Got: %s", msg))
 
     google_api = pygsheets.authorize(service_file='client_secret.json')
 
     sheet_title="Public Slack User Count NEW"
-    # google_api.open(sheet_title)
-    # s = google_api.create(sheet_title)
-    # s.share(email_or_domain="steve@quix.io")
+
     workspace = google_api.open(sheet_title)
     sheet = workspace[0]
     sheet.update_values(
