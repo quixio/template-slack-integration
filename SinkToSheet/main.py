@@ -54,7 +54,7 @@ def main():
     google_api = pygsheets.authorize()
     workspace = google_api.open("Public Slack UserCount")
     sheet = workspace[0]
-        sheet.update_values(
+    sheet.update_values(
         "A1",
         [
             ["User Count"]
