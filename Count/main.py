@@ -6,7 +6,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v2", auto_offset_reset="earliest")
+app = Application(consumer_group="transformation-v22", auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
