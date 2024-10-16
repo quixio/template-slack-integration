@@ -3,6 +3,7 @@ from quixstreams import Application
 from uuid import uuid4
 from datetime import timedelta
 import pygsheets
+import os
 
 # incomming data
 # {
