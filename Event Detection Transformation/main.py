@@ -9,7 +9,7 @@ load_dotenv()
 
 app = Application(consumer_group="hard-braking-v1", auto_offset_reset="earliest", use_changelog_topics=False)
 
-input_topic = app.topic(os.environ["input"])
+input_topic = app.topic(os.environ["input"], value_deserializer="string")
 output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
