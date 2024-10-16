@@ -83,6 +83,7 @@ def main():
     )
 
     def to_google(msg):
+        print(msg)
         sheet.insert_rows(
             1,
             values=[
