@@ -38,12 +38,12 @@ deployments:
         inputType: InputTopic
         description: Name of the input topic to listen to.
         required: false
-        value: slack_users
+        value: slack_user_count
       - name: output
         inputType: OutputTopic
         description: Name of the output topic to write to.
         required: false
-        value: count
+        value: real_count
   - name: SinkToSheet
     application: SinkToSheet
     version: latest
