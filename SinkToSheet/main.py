@@ -82,7 +82,7 @@ def main():
             ],
         )
 
-    sdf = sdf.apply(to_google)
+    # sdf = sdf.apply(to_google)
 
     app.run(sdf)
 
