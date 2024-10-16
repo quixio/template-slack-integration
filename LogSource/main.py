@@ -5,6 +5,9 @@ from quixstreams import Application  # import the Quix Streams modules for inter
 import os
 import requests
 import json
+import time
+
+
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
 load_dotenv()
@@ -45,6 +48,7 @@ def stream_logs(deployment_id, base_url, message_handler, headers=None):
         except requests.exceptions.RequestException as e:
             print(f"Error accessing logs: {e}")
             message_handler(deployment_id, {"code": 1, "message": "Deployment is offline"})
+            time.
         except KeyboardInterrupt:
             print("Exiting.")
             break
