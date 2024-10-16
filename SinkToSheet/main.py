@@ -26,7 +26,7 @@ def get_client_secret():
 def main():
     app = Application(
         loglevel="DEBUG",
-        consumer_group="slack_users_v2",
+        consumer_group="slack_users_v22",
         auto_offset_reset="earliest",
     )
 
