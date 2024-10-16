@@ -4,7 +4,7 @@ variables:
   - name: input
     inputType: InputTopic
     description: Name of the input topic to listen to.
-    defaultValue: count
+    defaultValue: real_count
     required: false
   - name: google_auth_secret_url
     inputType: Secret
