@@ -27,7 +27,7 @@ def handle_message(deployment_id, message):
         # publish the data to the topic
         producer.produce(
             topic=topic.name,
-            key="a",
+            key=deployment_id,
             value="b",
         )
         print("All rows published")
