@@ -25,11 +25,11 @@ def handle_message(deployment_id, message):
     # create a pre-configured Producer object.
     with app.get_producer() as producer:
         # publish the data to the topic
-        # producer.produce(
-        #     topic=topic.name,
-        #     key=deployment_id.encode('utf-8'),
-        #     value=json.loads(message),
-        # )
+        producer.produce(
+            topic=topic.name,
+            key="a",
+            value="b",
+        )
         print("All rows published")
 
 def stream_logs(deployment_id, base_url, message_handler, headers=None):
