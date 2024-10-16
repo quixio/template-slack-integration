@@ -68,7 +68,7 @@ def main():
     sheet.update_values(
         "A1",
         [
-            ["User Count x"]
+            ["User Count"]
         ],
     )
 
