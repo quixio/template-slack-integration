@@ -35,7 +35,7 @@ def main():
         auto_offset_reset="earliest",
     )
 
-    input_topic = app.topic("weather_data_demo")
+    input_topic = app.topic(os.environ["input"])
 
     sdf = app.dataframe(input_topic)
 
