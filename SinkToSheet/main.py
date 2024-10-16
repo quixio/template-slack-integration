@@ -65,7 +65,7 @@ def main():
     #     initializer=initializer_fn,
     #     reducer=reducer_fn,
     # )
-    sdf = sdf.final()
+    # sdf = sdf.final()
 
     sdf = sdf.update(lambda msg: logging.debug("Got: %s", msg))
 
