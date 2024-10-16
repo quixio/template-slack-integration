@@ -58,13 +58,13 @@ def main():
     sdf = app.dataframe(input_topic)
 
     # sdf = sdf.group_into_hourly_batches(...)
-    sdf = sdf.tumbling_window(duration_ms=timedelta(hours=12))
+    #sdf = sdf.tumbling_window(duration_ms=timedelta(hours=12))
 
     # sdf = sdf.summarize_that_hour(...)
-    sdf = sdf.reduce(
-        initializer=initializer_fn,
-        reducer=reducer_fn,
-    )
+    # sdf = sdf.reduce(
+    #     initializer=initializer_fn,
+    #     reducer=reducer_fn,
+    # )
     sdf = sdf.final()
 
     sdf = sdf.update(lambda msg: logging.debug("Got: %s", msg))
