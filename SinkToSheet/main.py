@@ -77,7 +77,8 @@ def main():
         sheet.insert_rows(
             1,
             values=[
-                str(msg)
+                msg["time"],
+                msg["used_percent"]
             ],
         )
 
