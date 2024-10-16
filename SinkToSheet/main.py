@@ -4,9 +4,15 @@ from uuid import uuid4
 from datetime import timedelta
 import pygsheets
 
+# incomming data
+# {
+#   "start": 1729085226000,
+#   "end": 1729085227000,
+#   "value": 510
+# }
 
 def initializer_fn(msg):
-    count = msg["current"]["slack_users"]
+    count = msg["value"]
 
     return {
         "count": count
@@ -14,7 +20,7 @@ def initializer_fn(msg):
 
 
 def reducer_fn(summary, msg):
-    count = msg["current"]["slack_users"]
+    count = msg["value"]
 
     return {
         "count": count
