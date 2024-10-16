@@ -51,7 +51,7 @@ topics:
     configuration:
       partitions: 1
       replicationFactor: 2
-      retentionInMinutes: -1
+      retentionInMinutes: 500
       retentionInBytes: 1000
   - name: count
     configuration:
