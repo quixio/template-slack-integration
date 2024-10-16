@@ -11,6 +11,11 @@ variables:
     description: ''
     defaultValue: quix_api_token
     required: false
+  - name: deployment_id
+    inputType: FreeText
+    description: ''
+    defaultValue: daff9f81-8d8a-4ae8-bb48-3676fb4e05e8
+    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
