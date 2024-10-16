@@ -1,3 +1,4 @@
+import requests
 from quixstreams import Application  # import the Quix Streams modules for interacting with Kafka:
 # (see https://quix.io/docs/quix-streams/v2-0-latest/api-reference/quixstreams.html for more details)
 
