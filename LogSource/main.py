@@ -16,7 +16,7 @@ app = Application(consumer_group="data_source", auto_create_topics=True)  # crea
 
 # define the topic using the "output" environment variable
 topic_name = os.environ["output"]
-topic = app.topic(topic_name)
+topic = app.topic(topic_name, value_serializer="string")
 
 def handle_message(deployment_id, message):
     print(deployment_id)
