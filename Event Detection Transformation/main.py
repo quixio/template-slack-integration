@@ -36,7 +36,7 @@ sdf.print()
 # })
 
 # Print JSON messages in console.
-sdf.print()
+# sdf.print()
 
 # Send the message to the output topic
 # sdf.to_topic(output_topic)
