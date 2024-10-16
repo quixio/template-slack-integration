@@ -66,9 +66,6 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: count
-    configuration:
-      retentionInMinutes: 500
   - name: member_details
     configuration:
       retentionInMinutes: 500
