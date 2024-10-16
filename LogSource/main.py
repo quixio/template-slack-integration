@@ -46,7 +46,7 @@ def stream_logs(deployment_id, base_url, message_handler, headers=None):
                         message_handler(deployment_id, json.dumps({"code": 0, "message": line.decode('utf-8')}))
         except requests.exceptions.RequestException as e:
             print(f"Error accessing logs: {e}")
-            message_handler(deployment_id, {"code": 1, "message": "Deployment is offline"})
+            message_handler(deployment_id, json.dumps({"code": 1, "message": "Deployment is offline"}))
             time.sleep(30)
         except KeyboardInterrupt:
             print("Exiting.")
