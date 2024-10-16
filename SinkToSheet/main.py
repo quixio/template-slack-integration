@@ -6,24 +6,18 @@ import pygsheets
 
 
 def initializer_fn(msg):
-    temperature = msg["current"]["temperature_2m"]
+    count = msg["current"]["slack_users"]
 
     return {
-        "open": temperature,
-        "high": temperature,
-        "low": temperature,
-        "close": temperature,
+        "count": count
     }
 
 
 def reducer_fn(summary, msg):
-    temperature = msg["current"]["temperature_2m"]
+    count = msg["current"]["slack_users"]
 
     return {
-        "open": summary["open"],
-        "high": max(summary["high"], temperature),
-        "low": min(summary["low"], temperature),
-        "close": temperature,
+        "count": count
     }
 
 
@@ -40,7 +34,7 @@ def main():
     sdf = app.dataframe(input_topic)
 
     # sdf = sdf.group_into_hourly_batches(...)
-    sdf = sdf.tumbling_window(duration_ms=timedelta(hours=1))
+    sdf = sdf.tumbling_window(duration_ms=timedelta(hours=12))
 
     # sdf = sdf.summarize_that_hour(...)
     sdf = sdf.reduce(
