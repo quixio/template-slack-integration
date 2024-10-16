@@ -11,15 +11,14 @@ import time
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
+# for local dev, load env vars from a .env file
+from dotenv import load_dotenv
+load_dotenv()
+
 # WebClient instantiates a client that can call API methods
 # When using Bolt, you can use either `app.client` or the `client` passed to listeners.
 slack_client = WebClient(token=os.environ.get("slack_token"))
 logger = logging.getLogger(__name__)
-
-
-# for local dev, load env vars from a .env file
-from dotenv import load_dotenv
-load_dotenv()
 
 app = Application(consumer_group="data_source", auto_create_topics=True)  # create an Application
 
