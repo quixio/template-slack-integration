@@ -23,23 +23,6 @@ def get_client_secret():
         f.write(response.content)
 
 
-def initializer_fn(msg):
-    print(msg)
-    count = msg["used_percent"]
-
-    return {
-        "count": count
-    }
-
-
-def reducer_fn(summary, msg):
-    count = msg["used_percent"]
-
-    return {
-        "count": count
-    }
-
-
 def main():
     app = Application(
         loglevel="DEBUG",
@@ -50,15 +33,13 @@ def main():
     input_topic = app.topic(os.environ["input"])
 
     sdf = app.dataframe(input_topic)
-
     sdf = sdf.update(lambda msg: logging.debug("Got: %s", msg))
 
     google_api = pygsheets.authorize(service_file='client_secret.json')
-
     sheet_title="Public Slack User Count NEW"
-
     workspace = google_api.open(sheet_title)
     sheet = workspace[0]
+
     sheet.update_values(
         "A1",
         [
