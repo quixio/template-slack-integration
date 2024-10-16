@@ -88,7 +88,7 @@ def main():
         sheet.insert_rows(
             1,
             values=[
-                msg["value"]["count"]
+                str(msg)
             ],
         )
 
