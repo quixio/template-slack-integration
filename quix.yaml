@@ -78,3 +78,9 @@ topics:
   - name: member_details
     configuration:
       retentionInMinutes: 500
+  - name: slack_user_count
+    configuration:
+      partitions: 1
+      replicationFactor: 2
+      retentionInMinutes: 11700
+      retentionInBytes: 52428800
