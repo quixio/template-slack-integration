@@ -25,7 +25,7 @@ def initializer_fn(msg):
 
 def reducer_fn(summary, msg):
     if msg is not None:
-        print(msg)
+        # print(msg)
         # Update the state with the new message
         summary["count"] += 1
         summary["messages"].append(msg["message"])
