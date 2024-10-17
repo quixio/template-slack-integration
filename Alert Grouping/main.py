@@ -46,7 +46,7 @@ sdf = sdf.reduce(
 sdf = sdf.final()
 
 sdf = sdf.update(lambda x: print(x))
-# sdf.to_topic(output_topic)
+sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)
