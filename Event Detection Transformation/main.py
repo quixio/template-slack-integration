@@ -65,15 +65,9 @@ def find_message(main_string):
 # Filter only windows where average brake force exceeded 50%.
 sdf = sdf.apply(func=find_message)
 
-sdf = {
-    sdf.hopping_window(duration_ms=timedelta(minutes=5), step_ms=timedelta(minutes=1))
-    .mean()
-    .final()
-}
-    
 
 # Print JSON messages in console.
-# sdf.print()
+sdf.print()
 
 # Send the message to the output topic
 # sdf.to_topic(output_topic)
