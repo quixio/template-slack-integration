@@ -4,7 +4,7 @@ variables:
   - name: output
     inputType: OutputTopic
     description: Name of the output topic to write into
-    defaultValue: slack_users
+    defaultValue: slack_rt_threads
     required: true
   - name: slack_bot_token
     inputType: Secret
