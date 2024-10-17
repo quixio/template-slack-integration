@@ -32,7 +32,8 @@ def find_message(main_string):
     checks = [
         {"check": " error ", "message": "Error keyword detected"},
         {"check": " stopping ", "message": "Service stopping"},
-        {"check": " shutdown ", "message": "Service shutdown detected"}
+        {"check": " shutdown ", "message": "Service shutdown detected"},
+        {"check": " 5/5 brokers are down ", "message": "All brokers are down"}
     ]
 
     print("------------------------------------------------------------------------")
