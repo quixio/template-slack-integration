@@ -35,7 +35,7 @@ def main():
                 channel_id = channel["id"]
                 if channel["is_member"]:
                     print(channel)
-                    break
+                    
                     messages_result = slack_client.conversations_history(channel=channel_id)
 
                     if not messages_result["ok"]:
