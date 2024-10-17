@@ -1,5 +1,6 @@
 import os
 from quixstreams import Application
+from datetime import timedelta
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -12,12 +13,32 @@ output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
 
-# put transformation logic here
-# see docs for what you can do
-# https://quix.io/docs/get-started/quixtour/process-threshold.html
+def initializer_fn(msg):
+    # Initialize the state for the window
+    return {
+        "count": 0,
+        "messages": []
+    }
+
+def reducer_fn(summary, msg):
+    # Update the state with the new message
+    summary["count"] += 1
+    summary["messages"].append(msg["message"])
+    return summary
+
+# Define a 10-minute tumbling window
+sdf = sdf.tumbling_window(duration_ms=timedelta(minutes=10))
+
+# Apply the initializer and reducer functions
+sdf = sdf.reduce(
+    initializer=initializer_fn,
+    reducer=reducer_fn
+)
+
+
 
 sdf.print()
-sdf.to_topic(output_topic)
+# sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)
