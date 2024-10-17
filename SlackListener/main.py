@@ -23,14 +23,25 @@ topic = app.topic(topic_name)
 
 logger = logging.getLogger(__name__)
 
+def get_user_name(user_id):
+    try:
+        response = slack_client.users_info(user=user_id)
+        if response["ok"]:
+            return response["user"]["name"]
+    except SlackApiError as e:
+        logger.error(f"Error fetching user info: {e}")
+    return "Unknown User"
+
 def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
     if req.type == "events_api" and req.payload["event"]["type"] == "message":
         event = req.payload["event"]
         channel_id = event.get("channel")
         message_ts = event.get("ts")
         message_text = event.get("text")
+        user_name = get_user_name(user_id)
 
         print(event)
+        print(user_name)
 
 
         message_data = {
