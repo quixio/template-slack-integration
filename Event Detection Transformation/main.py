@@ -23,8 +23,23 @@ sdf = app.dataframe(input_topic)
         
 sdf.print()
 
+def find_message(main_string, checks):
+    main_string_lower = main_string.lower()
+    for item in checks:
+        if item["check"].strip().lower() in main_string_lower:
+            return item["message"]
+    return None
+
+checks = [
+    {"check": " error ", "message": "Error keyword detected"},
+    {"check": " stopping ", "message": "Service stopping"},
+    {"check": " shutdown ", "message": "Service shutdown detected"}
+]
+
 # Filter only windows where average brake force exceeded 50%.
-# sdf = sdf[sdf["value"] > 0.5]
+sdf = sdf[sdf["value"] != ""]
+sdf = sdf[sdf["value"] != ""]
+
 
 # Create nice JSON alert message.
 # sdf = sdf.apply(lambda row: {
