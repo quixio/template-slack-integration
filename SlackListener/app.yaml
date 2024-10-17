@@ -1,0 +1,16 @@
+name: SlackListener
+language: python
+variables:
+  - name: output
+    inputType: OutputTopic
+    description: Name of the output topic to write into
+    defaultValue: slack_users
+    required: true
+  - name: slack_token
+    inputType: Secret
+    description: ''
+    defaultValue: slack_bot_token
+    required: true
+dockerfile: dockerfile
+runEntryPoint: main.py
+defaultFile: main.py
