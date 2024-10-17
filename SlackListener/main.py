@@ -8,6 +8,7 @@ from slack_sdk.socket_mode.response import SocketModeResponse
 from slack_sdk.errors import SlackApiError
 from dotenv import load_dotenv
 from quixstreams import Application
+import time
 
 load_dotenv()
 
@@ -53,7 +54,9 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
 def main():
     socket_mode_client.socket_mode_request_listeners.append(handle_message_events)
     socket_mode_client.connect()
-    socket_mode_client.start()
+    
+    while True:
+        time.sleep(1)
 
 if __name__ == "__main__":
     try:
