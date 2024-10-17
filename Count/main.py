@@ -18,12 +18,11 @@ sdf = app.dataframe(input_topic)
 # https://quix.io/docs/get-started/quixtour/process-threshold.html
 
 sdf = (
-    sdf.tumbling_window(duration_ms=timedelta(hours=12))
+    sdf.tumbling_window(duration_ms=timedelta(hours=1))
     .count()
     .final()
 )
-
-sdf = sdf.update(lambda row: print(row))
+sdf.print()
 
 sdf = sdf.to_topic(output_topic)
 
