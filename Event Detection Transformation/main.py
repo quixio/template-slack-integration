@@ -39,23 +39,18 @@ def find_message(main_string):
     # print(main_string)
     
     j = json.loads(main_string)
-    if j is None:
-        print("Got NONE")
-
 
     if "message" in j:
-        print(j["message"])
-    else:
-        print("No message field")
+        msg = j["message"]
 
-
+        main_string_lower = msg.lower()
+        for item in checks:
+            if item["check"].strip().lower() in main_string_lower:
+                return item["message"]
+        return None
+        
     print("++------------------------------------------------------------------------")
 
-    # main_string_lower = main_string.lower()
-    # for item in checks:
-    #     if item["check"].strip().lower() in main_string_lower:
-    #         return item["message"]
-    # return None
 
 # Filter only windows where average brake force exceeded 50%.
 # sdf = sdf[sdf["message"] != ""]
