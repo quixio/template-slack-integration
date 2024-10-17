@@ -2,7 +2,7 @@ import os
 from quixstreams import Application
 from datetime import datetime
 import json
-
+import re
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
 load_dotenv()
@@ -27,6 +27,8 @@ sdf = app.dataframe(input_topic)
         
 # sdf.print()
 
+time_pattern = r"\[\d{4}-\d{2}-\d{2} (\d{2}:\d{2}:\d{2},\d{3})\]"
+
 def find_message(main_string):
 
     checks = [
@@ -47,7 +49,13 @@ def find_message(main_string):
         main_string_lower = msg.lower()
         for item in checks:
             if item["check"].strip().lower() in main_string_lower:
-                return item["message"]
+                match = re.search(time_pattern, main_string_lower)
+
+                if match:
+                    return { "ts": str(match.group(1)), "message": item["message"] }
+                else:
+                    current_time = datetime.now().strftime("%H:%M:%S,%f")[:-3]
+                    return { "ts": str(current_time), "message": item["message"] }
         return None
 
     print("++------------------------------------------------------------------------")
