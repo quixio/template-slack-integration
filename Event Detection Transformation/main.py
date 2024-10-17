@@ -7,7 +7,11 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="hard-braking-v1234", auto_offset_reset="earliest", use_changelog_topics=False)
+import uuid
+
+i = uuid.uuid4()
+
+app = Application(consumer_group="hard-braking-v1"+str(i), auto_offset_reset="earliest", use_changelog_topics=False)
 
 input_topic = app.topic(os.environ["input"], value_deserializer="string")
 output_topic = app.topic(os.environ["output"])
