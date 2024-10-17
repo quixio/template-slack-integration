@@ -22,8 +22,8 @@ def initializer_fn(msg):
 
 def reducer_fn(summary, msg):
     # Update the state with the new message
-    summary["count"] += 1
-    summary["messages"].append(msg["message"])
+    # summary["count"] += 1
+    # summary["messages"].append(msg["message"])
     return summary
 
 # Define a 10-minute tumbling window
