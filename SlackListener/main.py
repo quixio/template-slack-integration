@@ -41,7 +41,7 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
         user_id = event.get("user")
         user_name = get_user_name(user_id)
 
-        print(event)
+        print(user_id)
         print(user_name)
 
 
@@ -71,7 +71,7 @@ def main():
     socket_mode_client.connect()
     
     while True:
-        time.sleep(0.001)
+        time.sleep(0.1)
 
 if __name__ == "__main__":
     try:
