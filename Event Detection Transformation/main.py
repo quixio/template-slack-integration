@@ -69,7 +69,6 @@ sdf = {
     sdf.hopping_window(duration_ms=timedelta(minutes=5), step_ms=timedelta(minutes=1))
     .mean()
     .final()
-    .print()
 }
     
 
