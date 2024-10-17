@@ -42,7 +42,7 @@ def find_message(main_string):
 
     if "message" in j:
         msg = j["message"]
-
+        print(msg)
         main_string_lower = msg.lower()
         for item in checks:
             if item["check"].strip().lower() in main_string_lower:
