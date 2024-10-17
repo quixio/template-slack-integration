@@ -72,7 +72,7 @@ def main():
                     
                 print("All rows published")
         
-        time.sleep(14400) # sleep 4 hours
+        time.sleep(3600 * 8) # sleep 4 hours
 
 
 if __name__ == "__main__":
