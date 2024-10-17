@@ -30,6 +30,9 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
         message_ts = event.get("ts")
         message_text = event.get("text")
 
+        print(event)
+
+
         message_data = {
             "timestamp": message_ts,
             "text": message_text,
