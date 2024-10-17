@@ -35,9 +35,7 @@ sdf = sdf.reduce(
     reducer=reducer_fn
 )
 
-
-
-sdf.print()
+sdf = sdf.update(lambda x: print(x))
 # sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
