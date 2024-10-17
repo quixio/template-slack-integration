@@ -36,14 +36,14 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
         }
 
         json_data = json.dumps(message_data)
-
-        # Publish the data to the topic
-        with app.get_producer() as producer:
-            producer.produce(
-                topic=topic.name,
-                key='slack_messages',
-                value=json_data,
-            )
+        print(json_data)
+        # # Publish the data to the topic
+        # with app.get_producer() as producer:
+        #     producer.produce(
+        #         topic=topic.name,
+        #         key='slack_messages',
+        #         value=json_data,
+        #     )
 
         print(f"Message from channel {channel_id} published")
 
