@@ -44,6 +44,9 @@ sdf = sdf.reduce(
     reducer=reducer_fn
 )
 sdf = sdf.final()
+
+sdf.filter(sdf['value'] is not None)
+
 sdf = sdf.update(lambda x: print(x))
 # sdf.to_topic(output_topic)
 
