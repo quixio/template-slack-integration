@@ -15,6 +15,7 @@ input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
+sdf.filter(sdf['value'] is not None)
 sdf.print()
 def initializer_fn(msg):
     # Initialize the state for the window
