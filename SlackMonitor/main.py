@@ -55,6 +55,11 @@ def main():
 
                             json_data = json.dumps(message_data)
                             print(json_data)
+
+                            #####
+                            ## TODO : time stamp the last message read to avoid duplication
+                            #####
+
                             # # Publish the data to the topic
                             # producer.produce(
                             #     topic=topic.name,
