@@ -69,11 +69,12 @@ sdf = {
     sdf.hopping_window(duration_ms=timedelta(minutes=5), step_ms=timedelta(minutes=1))
     .mean()
     .final()
+    .print()
 }
     
 
 # Print JSON messages in console.
-sdf.print()
+# sdf.print()
 
 # Send the message to the output topic
 # sdf.to_topic(output_topic)
