@@ -48,7 +48,7 @@ def find_message(main_string):
             if item["check"].strip().lower() in main_string_lower:
                 return item["message"]
         return None
-        
+
     print("++------------------------------------------------------------------------")
 
 
@@ -69,7 +69,7 @@ sdf = sdf.apply(func=find_message)
 # })
 
 # Print JSON messages in console.
-# sdf.print()
+sdf.print()
 
 # Send the message to the output topic
 # sdf.to_topic(output_topic)
