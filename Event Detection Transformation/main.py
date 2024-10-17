@@ -33,7 +33,9 @@ def find_message(main_string):
 
     print("------------------------------------------------------------------------")
     print(main_string)
-    print("------------------------------------------------------------------------")
+    j = json.loads(main_string)
+
+    print("++------------------------------------------------------------------------")
 
     # main_string_lower = main_string.lower()
     # for item in checks:
