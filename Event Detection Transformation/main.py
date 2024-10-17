@@ -10,7 +10,8 @@ load_dotenv()
 
 import uuid
 
-i = uuid.uuid4()
+# i = uuid.uuid4()
+i=1
 
 app = Application(consumer_group="hard-braking-v1"+str(i), auto_offset_reset="earliest", use_changelog_topics=False)
 
