@@ -32,7 +32,7 @@ def find_message(main_string):
     ]
 
     print("------------------------------------------------------------------------")
-    print(str(main_string["message"]))
+    print(str(main_string["value"]))
     print("------------------------------------------------------------------------")
 
     # main_string_lower = main_string.lower()
