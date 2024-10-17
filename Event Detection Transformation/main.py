@@ -1,8 +1,9 @@
 import os
 from quixstreams import Application
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import re
+
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
 load_dotenv()
@@ -62,20 +63,13 @@ def find_message(main_string):
 
 
 # Filter only windows where average brake force exceeded 50%.
-# sdf = sdf[sdf["message"] != ""]
 sdf = sdf.apply(func=find_message)
 
-# sdf = sdf[find_message(sdf["message"], checks)]
-
-
-# Create nice JSON alert message.
-# sdf = sdf.apply(lambda row: {
-#     "Timestamp": str(datetime.fromtimestamp(row["start"]/1000)),
-#     "Alert": {
-#         "Title": "Hard braking detected.",
-#         "Message": "For last 1 second, average braking power was " + str(row["value"])
-#     }
-# })
+sdf = {
+    sdf.hopping_window(duration_ms=timedelta(minutes=5), step_ms=timedelta(minutes=1))
+    .final()
+}
+    
 
 # Print JSON messages in console.
 sdf.print()
