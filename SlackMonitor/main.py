@@ -33,6 +33,7 @@ def main():
             # Iterate over each channel to fetch messages
             for channel in channels:
                 channel_id = channel["id"]
+                print(channel)
                 messages_result = slack_client.conversations_history(channel=channel_id)
 
                 if not messages_result["ok"]:
