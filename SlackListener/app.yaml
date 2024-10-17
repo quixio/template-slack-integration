@@ -6,7 +6,7 @@ variables:
     description: Name of the output topic to write into
     defaultValue: slack_users
     required: true
-  - name: slack_token
+  - name: slack_bot_token
     inputType: Secret
     description: ''
     defaultValue: slack_bot_token
