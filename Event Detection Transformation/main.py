@@ -37,6 +37,9 @@ def find_message(main_string):
 
     print("------------------------------------------------------------------------")
     # print(main_string)
+    if main_string is None:
+        print("Got NONE")
+
     j = json.loads(main_string)
     if "message" in j:
         print(j["message"])
