@@ -34,7 +34,11 @@ def find_message(main_string):
     print("------------------------------------------------------------------------")
     print(main_string)
     j = json.loads(main_string)
-    print(j["value"])
+    if "value" in j:
+        print(j["value"])
+    else:
+        print("No Value")
+
 
     print("++------------------------------------------------------------------------")
 
