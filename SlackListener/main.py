@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 def get_user_name(user_id):
     try:
+        print(user_id)
         response = slack_client.users_info(user=user_id)
         print(response)
         if response["ok"]:
