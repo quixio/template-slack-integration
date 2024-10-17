@@ -25,9 +25,9 @@ logger = logging.getLogger(__name__)
 
 def get_user_name(user_id):
     try:
-        print(user_id)
+        # print(user_id)
         response = slack_client.users_info(user=user_id)
-        print(response)
+        # print(response)
         if response["ok"]:
             return response["user"]["name"]
     except SlackApiError as e:
@@ -43,8 +43,8 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
         user_id = event.get("user")
         user_name = get_user_name(user_id)
 
-        print(user_id)
-        print(user_name)
+        # print(user_id)
+        # print(user_name)
 
 
         message_data = {
