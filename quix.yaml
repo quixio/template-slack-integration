@@ -125,6 +125,25 @@ deployments:
         description: Name of the output topic to write to.
         required: false
         value: alerts_to_send
+  - name: Slack Sink
+    application: Slack Sink
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 200
+      replicas: 1
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Name of the input topic to listen to.
+        required: true
+        value: alerts_to_send
+      - name: webhook_url
+        inputType: FreeText
+        description: The webhook url to send notifications to
+        required: true
+        value: https://hooks.slack.com/services/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
 
 # This section describes the Topics of the data pipeline
 topics:
