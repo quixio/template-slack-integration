@@ -51,13 +51,13 @@ def main():
                         }
 
                         json_data = json.dumps(message_data)
-
-                        # Publish the data to the topic
-                        producer.produce(
-                            topic=topic.name,
-                            key='slack_messages',
-                            value=json_data,
-                        )
+                        print(json_data)
+                        # # Publish the data to the topic
+                        # producer.produce(
+                        #     topic=topic.name,
+                        #     key='slack_messages',
+                        #     value=json_data,
+                        # )
 
                     print(f"Messages from channel {channel_id} published")
 
