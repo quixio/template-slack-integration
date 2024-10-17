@@ -40,7 +40,7 @@ sdf = sdf.reduce(
     reducer=reducer_fn
 )
 sdf = sdf.final()
-# sdf = sdf.update(lambda x: print(x))
+sdf = sdf.update(lambda x: print(x))
 # sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
