@@ -53,6 +53,7 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
 def main():
     socket_mode_client.socket_mode_request_listeners.append(handle_message_events)
     socket_mode_client.connect()
+    socket_mode_client.start()
 
 if __name__ == "__main__":
     try:
