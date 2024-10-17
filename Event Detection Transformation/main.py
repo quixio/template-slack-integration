@@ -31,7 +31,10 @@ def find_message(main_string):
         {"check": " shutdown ", "message": "Service shutdown detected"}
     ]
 
-    print(str(main_string))
+    print("------------------------------------------------------------------------")
+    print(str(main_string["message"]))
+    print("------------------------------------------------------------------------")
+
     # main_string_lower = main_string.lower()
     # for item in checks:
     #     if item["check"].strip().lower() in main_string_lower:
