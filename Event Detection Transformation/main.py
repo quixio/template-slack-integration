@@ -24,7 +24,7 @@ sdf = app.dataframe(input_topic)
 sdf.print()
 
 def find_message(main_string, checks):
-    print(main_string)
+    print(str(main_string))
     main_string_lower = main_string.lower()
     for item in checks:
         if item["check"].strip().lower() in main_string_lower:
