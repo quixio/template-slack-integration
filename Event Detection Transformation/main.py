@@ -25,7 +25,7 @@ sdf = app.dataframe(input_topic)
 # sdf = sdf.apply(lambda row: row["Brake"]) \
 #         .hopping_window(1000, 200).mean().final() 
         
-sdf.print()
+# sdf.print()
 
 def find_message(main_string):
 
