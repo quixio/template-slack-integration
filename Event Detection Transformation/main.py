@@ -70,7 +70,7 @@ sdf = sdf.apply(func=find_message)
 sdf.print()
 
 # Send the message to the output topic
-# sdf.to_topic(output_topic)
+sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)
