@@ -36,7 +36,7 @@ def reducer_fn(summary, msg):
     return summary
 
 # Define a 10-minute tumbling window
-sdf = sdf.tumbling_window(duration_ms=timedelta(seconds=5))
+sdf = sdf.tumbling_window(duration_ms=timedelta(minutes=5))
 
 # Apply the initializer and reducer functions
 sdf = sdf.reduce(
