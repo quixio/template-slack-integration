@@ -6,7 +6,10 @@ from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Application(consumer_group="transformation-v1", auto_offset_reset="earliest")
+import uuid
+i = str(uuid.uuid4())
+
+app = Application(consumer_group="transformation-v" + i, auto_offset_reset="earliest")
 
 input_topic = app.topic(os.environ["input"])
 output_topic = app.topic(os.environ["output"])
