@@ -38,6 +38,7 @@ def handle_message_events(client: SocketModeClient, req: SocketModeRequest):
         channel_id = event.get("channel")
         message_ts = event.get("ts")
         message_text = event.get("text")
+        user_id = event.get("user")
         user_name = get_user_name(user_id)
 
         print(event)
