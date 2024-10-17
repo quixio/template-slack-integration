@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 def get_user_name(user_id):
     try:
         response = slack_client.users_info(user=user_id)
+        print(response)
         if response["ok"]:
             return response["user"]["name"]
     except SlackApiError as e:
