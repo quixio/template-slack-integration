@@ -39,7 +39,7 @@ checks = [
 
 # Filter only windows where average brake force exceeded 50%.
 sdf = sdf[sdf["value"] != ""]
-sdf = sdf[find_message(sdf["value"], checks)]
+sdf = sdf[find_message(sdf["message"], checks)]
 
 
 # Create nice JSON alert message.
