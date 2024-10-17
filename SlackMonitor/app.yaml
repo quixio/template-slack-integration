@@ -9,7 +9,7 @@ variables:
   - name: slack_token
     inputType: Secret
     description: ''
-    defaultValue: slack_bot_token
+    defaultValue: internal_slack_token
     required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
