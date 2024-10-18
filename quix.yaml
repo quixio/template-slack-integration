@@ -132,3 +132,8 @@ topics:
     configuration:
       partitions: 1
   - name: token_messages
+  - name: quix-communityslack-dev-count
+    configuration:
+      replicationFactor: 2
+      retentionInMinutes: 1440
+      retentionInBytes: 52428800
